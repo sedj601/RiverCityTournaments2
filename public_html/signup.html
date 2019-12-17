@@ -16,6 +16,7 @@ and open the template in the editor.
         <link href='https://fonts.googleapis.com/css?family=Istok+Web|Roboto+Condensed:700' rel='stylesheet' type='text/css'>
         <link href="css/bracket.css" rel="stylesheet" type="text/css">
         <link href="css/topnavbar.css" rel="stylesheet" type="text/css">
+        <link href="css/signupform.css" rel="stylesheet" type="text/css">
 
         <title>River City Tournaments</title>
     </head>
@@ -40,7 +41,107 @@ and open the template in the editor.
 
         <section id="bracket">
             <div class="container">
-                                          
+                <div class="split split-one">
+                    <div class="round round-one">                                    
+                    </div>  <!-- END ROUND ONE -->
+                    <div class="round round-two">                        
+                    </div>  <!-- END ROUND TWO -->
+                    <div class="round round-three">                                     
+                    </div>  <!-- END ROUND THREE -->        
+                </div> <!-- END OF SPLIT-ONE DIV-->
+                <div class="champion current">
+                    <div class="final">
+                        <form>
+                            <table>
+                                <tr>
+                                    <td style="width:130px">
+                                        <label for="inputName">Name: </label>
+                                    </td>
+                                    <td>
+                                        <input id="inputName" name="inputName" required="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:130px">
+                                        <label for="inputPartnerName">Partner Name: </label>
+                                    </td>
+                                    <td>
+                                        <input id="inputPartnerName" name="inputPartnerName" required="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:130px">
+                                        <label for="inputTeamName">Team Name: </label>
+                                    </td>
+                                    <td>
+                                        <input id="inputTeamName" name="inputTeamName" required="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:130px">
+                                        <label for="inputEmail">Email: </label>
+                                    </td>
+                                    <td>
+                                        <input id="inputEmail" name="inputEmail" required="" type="email">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:130px">
+                                        <label for="tel1">Phone Number: </label>
+                                    </td>
+                                    <td>
+                                        <input id="tel1" placeholder="555-555-5555" name="tel1" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required=""/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:130px">
+
+                                    </td>
+                                    <td>
+                                        <button>Submit</button>
+                                    </td>
+                                </tr>
+                            </table>                    
+                        </form>
+                        <div>
+                            <div id="paypal-button-container"></div>
+                            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
+                            <script>
+                                paypal.Buttons({
+                                    style: {
+                                        shape: 'rect',
+                                        color: 'gold',
+                                        layout: 'vertical',
+                                        label: 'paypal',
+
+                                    },
+                                    createOrder: function (data, actions) {
+                                        return actions.order.create({
+                                            purchase_units: [{
+                                                    amount: {
+                                                        value: '1'
+                                                    }
+                                                }]
+                                        });
+                                    },
+                                    onApprove: function (data, actions) {
+                                        return actions.order.capture().then(function (details) {
+                                            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                                        });
+                                    }
+                                }).render('#paypal-button-container');
+                            </script>
+                        </div>
+                    </div>
+                </div>                
+                <div class="split split-two">
+                    <div class="round round-three">                        
+                    </div>  <!-- END ROUND THREE -->  
+                    <div class="round round-two">                       
+                    </div>  <!-- END ROUND TWO -->
+                    <div class="round round-one">                                                             
+                    </div>  <!-- END ROUND ONE -->                          
+                </div>
             </div>
         </section>
         <section class="share">
